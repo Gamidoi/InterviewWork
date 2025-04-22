@@ -30,3 +30,10 @@ test("finding a diagonal location", () => {
     let answer = findValidMoves(boardState, 2)
     expect(answer).toEqual([[2, 2]]);
 })
+test("finding 8 possible moves, testing all directions", () => {
+    let boardState = [[0,0,0,0,0], [0,2,2,2,0], [0,2,1,2,0], [0,2,2,2,0], [0,0,0,0,0]]
+    let answer: [number, number][] = findValidMoves(boardState, 1)
+    let expectation: number[][] = [[0,0],[0,2],[0,4],[2,0],[2,4],[4,0],[4,2],[4,4]].sort();
+    answer = answer.sort();
+    expect(answer.sort()).toEqual(expectation)
+})

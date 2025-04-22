@@ -10,24 +10,20 @@ export function findValidMoves(boardState, player: number){
             if (boardState[i][j] === player){
                 let validRightMove =  checkinDirection([0,1], [i,j], boardState)
                 if (validRightMove.length != 0){ possibleMoves.push(validRightMove)}
-
-
-                let shiftValue = 1
-                while(boardState[i+shiftValue][j] != player && boardState[i+shiftValue][j] != 0 && i + shiftValue < rows){
-                    if (boardState[i+shiftValue + 1][j] === 0) {
-                        possibleMoves.push([i + shiftValue + 1, j]);
-                        break
-                    }
-                    shiftValue++;
-                }
-                shiftValue = 1
-                while(boardState[i+shiftValue][j+shiftValue] != player && boardState[i+shiftValue][j+shiftValue] != 0 && i + shiftValue < rows && j + shiftValue < columns) {
-                    if (boardState[i + shiftValue + 1][j + shiftValue + 1] === 0) {
-                        possibleMoves.push([i + shiftValue + 1, j + shiftValue + 1]);
-                        break
-                    }
-                    shiftValue++;
-                }
+                let validRightUpMove =  checkinDirection([-1,1], [i,j], boardState)
+                if (validRightUpMove.length != 0){ possibleMoves.push(validRightUpMove)}
+                let validUpMove =  checkinDirection([-1,0], [i,j], boardState)
+                if (validUpMove.length != 0){ possibleMoves.push(validUpMove)}
+                let validLeftUpMove =  checkinDirection([-1,-1], [i,j], boardState)
+                if (validLeftUpMove.length != 0){ possibleMoves.push(validLeftUpMove)}
+                let validLeftMove =  checkinDirection([0,-1], [i,j], boardState)
+                if (validLeftMove.length != 0){ possibleMoves.push(validLeftMove)}
+                let validLeftDownMove =  checkinDirection([1,-1], [i,j], boardState)
+                if (validLeftDownMove.length != 0){ possibleMoves.push(validLeftDownMove)}
+                let validDownMove =  checkinDirection([1,0], [i,j], boardState)
+                if (validDownMove.length != 0){ possibleMoves.push(validDownMove)}
+                let validRightDownMove =  checkinDirection([1,1], [i,j], boardState)
+                if (validRightDownMove.length != 0){ possibleMoves.push(validRightDownMove)}
             }
         }
     }
